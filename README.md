@@ -52,7 +52,10 @@ Run the scraper script by executing:
 - .env.example: An example environment variables file.
 
 
-
-
+# Features
+- Robust Data Extraction: The scraper extracts various types of data from web pages, including titles, text, HTML, and structured data like tables.
+- Multithreading: Utilizes multithreading to scrape multiple URLs concurrently, enhancing performance and efficiency.
+- Error Handling: Comprehensive error handling and logging to manage request failures and parsing errors.
+- Graceful Shutdown: Ensures threads complete their tasks before the script exits.
 
 
