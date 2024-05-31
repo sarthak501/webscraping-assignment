@@ -34,15 +34,30 @@ def scrape_and_save(url):
         response.raise_for_status()  # Check if request was successful
         soup = BeautifulSoup(response.text, 'html.parser')
 
+        # Extracting structured data like tables if any
+        tables = soup.find_all('table')
+        table_data = []
+        for table in tables:
+            headers = [header.text for header in table.find_all('th')]
+            rows = table.find_all('tr')
+            for row in rows:
+                columns = row.find_all('td')
+                if columns:
+                    data_row = {headers[i]: column.text for i, column in enumerate(columns)}
+                    table_data.append(data_row)
+
         data = {
             "title": soup.title.string if soup.title else 'No title',
             "text": soup.get_text(),
-            "html": str(soup)
+            "html": str(soup),
+            "tables": table_data
         }
         save_to_mongodb(data, url)
         time.sleep(2)  # Sleep to minimize load on the server
     except requests.exceptions.RequestException as e:
         logging.error(f"Error scraping {url}: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
 
 # Save data to MongoDB
 def save_to_mongodb(data, url):
