@@ -42,14 +42,14 @@ pip install -r requirements.txt
 
 # Step4: Run the Scraper
 Run the scraper script by executing:
-python main.py
+- python main.py
 
 
 # Project Structure
-main.py: The main script that performs web scraping and saves data to MongoDB.
-requirements.txt: Lists all the dependencies required for the project.
-.gitignore: Specifies which files and directories to ignore in version control.
-.env.example: An example environment variables file.
+- main.py: The main script that performs web scraping and saves data to MongoDB.
+- requirements.txt: Lists all the dependencies required for the project.
+- .gitignore: Specifies which files and directories to ignore in version control.
+- .env.example: An example environment variables file.
 
 
 
